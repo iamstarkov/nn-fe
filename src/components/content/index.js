@@ -2,6 +2,6 @@ import React from 'react';
 
 export const Content = () => (
     <div>
-        Hello World
+        Hello World says Martin
     </div>
 );
