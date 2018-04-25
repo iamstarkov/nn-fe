@@ -1,4 +1,5 @@
 export * from './page';
 export * from './header';
-//export * from './content';
+export * from './menu';
+export * from './content';
 export * from './footer';
