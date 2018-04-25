@@ -1,3 +1,4 @@
+import { Page, Header, Content, Footer } from './components';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
