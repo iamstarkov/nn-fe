@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import {Menu} from "..";
 import "./style.css"
 
@@ -10,10 +11,10 @@ const mainMenu = [
 
 export const Header = () => (
     <div className="header">
-        <span className='header__logo'>
+        <Link to="/" className='header__logo'>
            <img src="https://news.ycombinator.com/y18.gif" alt={"React news logo"}/>
             React news
-        </span>
+        </Link>
         <div className="header__menu">
             <Menu links={mainMenu}/>
         </div>
