@@ -1,0 +1,9 @@
+.unstyle {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.news_item {
+    margin-right: 10px;
+}

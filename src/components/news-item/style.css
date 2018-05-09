@@ -1,0 +1,13 @@
+.title {
+    font-size: larger;
+}
+
+.news_item {
+    background-color: antiquewhite;
+}
+.news_item_odd {
+    background-color: antiquewhite;
+}
+.news_item_even {
+    background-color: lightgray;
+}
