@@ -7,7 +7,7 @@ import "./style.css"
 
 export class NewsItem extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {item: {}}
     }
 
@@ -16,7 +16,8 @@ export class NewsItem extends Component {
     }
 
     render() {
-        const item = this.state.item
+        const item = this.state.item;
+        if (item.time === undefined) return <div>Loading ...</div>;
         const timeInMs = item.time * 1000;
         const age = distanceInWordsToNow(new Date(timeInMs));
         const comments = (item.descendants === 0) ? "discuss" : item.descendants + " comments";
