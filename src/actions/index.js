@@ -16,14 +16,14 @@ export const toggleTheme = () => ({
 // DATA
 // DATA ITEMS IDS
 export const requestItemIdsStart = () => ({
-    type: 'REQUEST_ITEMS_IDS_START',
+    type: 'REQUEST_ITEM_IDS_START',
 });
 export const requestItemIdsSuccess = itemIds => ({
-    type: 'REQUEST_ITEMS_IDS_SUCCESS',
+    type: 'REQUEST_ITEM_IDS_SUCCESS',
     payload: itemIds,
 });
 export const requestItemIdsFail = err => ({
-    type: 'REQUEST_ITEMS_IDS_FAIL',
+    type: 'REQUEST_ITEM_IDS_FAIL',
     payload: err,
 });
 

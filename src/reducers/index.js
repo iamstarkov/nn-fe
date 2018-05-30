@@ -33,11 +33,11 @@ const uiReducer = combineReducers({
 const dataItemIdsInitialState = { ids: [], isLoading: false, error: null };
 const itemIdsReducer = (state = dataItemIdsInitialState, action) => {
     switch (action.type) {
-        case 'REQUEST_ITEMS_IDS_START':
+        case 'REQUEST_ITEM_IDS_START':
             return { ...state, isLoading: true };
-        case 'REQUEST_ITEMS_IDS_SUCCESS':
+        case 'REQUEST_ITEM_IDS_SUCCESS':
             return { ids: action.payload, isLoading: false, error: null };
-        case 'REQUEST_ITEMS_IDS_FAIL':
+        case 'REQUEST_ITEM_IDS_FAIL':
             return {
                 ids: {},
                 isLoading: false,
