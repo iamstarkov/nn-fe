@@ -5,7 +5,7 @@ import {api} from '../../utils';
 import "./style.css"
 
 
-export class NewsItem extends Component {
+export class    NewsItem extends Component {
     constructor(props) {
         super(props);
         this.state = {item: {}}

@@ -13,7 +13,7 @@ export class PageNewsList extends Component {
             ids: undefined,
         };
         this.fetchIds = () => {
-            api.getItemsIds()
+            api.getItemIds()
                 .then(ids => {this.setState({ids})})
                 .catch(err => console.error(err));
         }

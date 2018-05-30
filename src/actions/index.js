@@ -15,14 +15,14 @@ export const toggleTheme = () => ({
 
 // DATA
 // DATA ITEMS IDS
-export const requestItemsIdsStart = () => ({
+export const requestItemIdsStart = () => ({
     type: 'REQUEST_ITEMS_IDS_START',
 });
-export const requestItemsIdsSuccess = itemIds => ({
+export const requestItemIdsSuccess = itemIds => ({
     type: 'REQUEST_ITEMS_IDS_SUCCESS',
     payload: itemIds,
 });
-export const requestItemsIdsFail = err => ({
+export const requestItemIdsFail = err => ({
     type: 'REQUEST_ITEMS_IDS_FAIL',
     payload: err,
 });
@@ -42,15 +42,15 @@ export const requestItemFail = (id, err) => ({
 });
 
 // FETCHES
-export const fetchItemsIds = dispatch => () => {
-    dispatch(requestItemsIdsStart());
+export const fetchItemIds = dispatch => () => {
+    dispatch(requestItemIdsStart());
     api
-        .getItemsIds()
-        .then(itemsIds => {
-            dispatch(requestItemsIdsSuccess(itemsIds));
+        .getItemIds()
+        .then(itemIds => {
+            dispatch(requestItemIdsSuccess(itemIds));
         })
         .catch(err => {
-            dispatch(requestItemsIdsFail(err));
+            dispatch(requestItemIdsFail(err));
         });
 };
 
