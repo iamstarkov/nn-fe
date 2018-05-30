@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Menu} from "..";
 import "./style.css"
-import * as actions from '../../actions';
 import {toggleTheme} from "../../actions";
 import { connect } from 'react-redux';
 
@@ -26,7 +25,7 @@ export const Header = (props) => (
 );
 
 const mapDispatchToProps = {
-    toggleTheme: actions.toggleTheme,
+    toggleTheme: toggleTheme,
 };
 
 export default connect(null, mapDispatchToProps)(Header);
