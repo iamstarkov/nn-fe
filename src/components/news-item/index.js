@@ -1,23 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {distanceInWordsToNow} from 'date-fns';
-import {api} from '../../utils';
-import "./style.css"
+import "./style.css";
+import {connect} from 'react-redux';
+import * as actions from '../../actions'
 
 
-export class    NewsItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {item: {}}
-    }
+export class NewsItem extends Component {
 
     componentDidMount() {
-        api.getItem(this.props.id).then(item => this.setState({item}));
+        this.props.fetchItem(this.props.id);
     }
 
     render() {
-        const item = this.state.item;
-        if (item.time === undefined) return <div>Loading ...</div>;
+        const item = this.props.item;
+        if (item === undefined || Object.keys(item).length === 0) return <div>Loading ...</div>;
         const timeInMs = item.time * 1000;
         const age = distanceInWordsToNow(new Date(timeInMs));
         const comments = (item.descendants === 0) ? "discuss" : item.descendants + " comments";
@@ -38,3 +35,15 @@ export class    NewsItem extends Component {
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        item: (state.data.items[ownProps.id] || {}).item,
+    }
+};
+
+const mapDispatchToProps = {
+    fetchItem: actions.fetchItem,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsItem);

@@ -42,26 +42,29 @@ export const requestItemFail = (id, err) => ({
 });
 
 // FETCHES
-export const fetchItemIds = dispatch => () => {
-    dispatch(requestItemIdsStart());
-    api
-        .getItemIds()
-        .then(itemIds => {
-            dispatch(requestItemIdsSuccess(itemIds));
-        })
-        .catch(err => {
-            dispatch(requestItemIdsFail(err));
-        });
+export const fetchItemIds = () => {
+    return (dispatch) => {
+        dispatch(requestItemIdsStart());
+        return api
+            .getItemIds()
+            .then(itemsIds => {
+                dispatch(requestItemIdsSuccess(itemsIds));
+            })
+            .catch(err => {
+                dispatch(requestItemIdsFail(err));
+            });
+    }
 };
-
-export const fetchItem = dispatch => id => {
-    dispatch(requestItemStart(id));
-    api
-        .getItem(id)
-        .then(item => {
-            dispatch(requestItemSuccess(item));
-        })
-        .catch(err => {
-            dispatch(requestItemFail(id, err));
-        });
+export const fetchItem = id => {
+    return (dispatch) => {
+        dispatch(requestItemStart(id));
+        return api
+            .getItem(id)
+            .then(item => {
+                dispatch(requestItemSuccess(item));
+            })
+            .catch(err => {
+                dispatch(requestItemFail(id, err));
+            });
+    }
 };
