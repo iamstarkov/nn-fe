@@ -1,4 +1,4 @@
-export * from './page';
+export {default as Page} from './page';
 export * from './page-news-list';
 export {default as Header} from './header';
 export * from './menu';
