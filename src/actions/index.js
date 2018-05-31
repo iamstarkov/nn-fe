@@ -1,6 +1,5 @@
 // src/actions/index.js
-import { api } from '../utils';
-
+import {api} from '../utils';
 
 // UI
 export const updateItemsToShow = value => ({
@@ -8,10 +7,15 @@ export const updateItemsToShow = value => ({
     payload: value,
 });
 
+export const setItemsToShow = value => {
+    return (dispatch) => {
+        dispatch(updateItemsToShow(value))
+    }
+};
+
 export const toggleTheme = () => ({
     type: 'TOGGLE_THEME',
 });
-
 
 // DATA
 // DATA ITEMS IDS
@@ -38,7 +42,7 @@ export const requestItemSuccess = itemObj => ({
 });
 export const requestItemFail = (id, err) => ({
     type: 'REQUEST_ITEM_FAIL',
-    payload: { id, err },
+    payload: {id, err},
 });
 
 // FETCHES

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {NewsItemList} from "..";
 import './style.css';
 import {connect} from "react-redux";
-import * as actions from "../../actions";
+import {fetchItemIds, setItemsToShow} from "../../actions";
 
 
 const isArraysEqual = (arr1 = [], arr2 = []) => arr1.toString() === arr2.toString();
@@ -28,6 +28,9 @@ export class PageNewsList extends Component {
             <div>
                 <NewsItemList ids={ids}/>
                 <button onClick={this.props.fetchItemIds}>Refresh</button>
+                items to show <input onChange={e =>
+                this.props.setItemsToShow(e.target.value)
+            }/>
             </div>
         );
     }
@@ -44,7 +47,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    fetchItemIds: actions.fetchItemIds,
+    fetchItemIds,
+    setItemsToShow
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageNewsList);
