@@ -1,46 +1,54 @@
 import React, {Component} from 'react';
-import {api} from '../../utils';
-import {NewsItemList} from "../";
+import {NewsItemList} from "..";
 import './style.css';
+import {connect} from "react-redux";
+import {fetchItemIds, setItemsToShow} from "../../actions";
 
 
 const isArraysEqual = (arr1 = [], arr2 = []) => arr1.toString() === arr2.toString();
 
 export class PageNewsList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            ids: undefined,
-        };
-        this.fetchIds = () => {
-            api.getItemsIds()
-                .then(ids => {this.setState({ids})})
-                .catch(err => console.error(err));
-        }
-    }
 
     componentDidMount() {
-        console.log("mounted", this);
-        this.fetchIds();
+        this.props.fetchItemIds();
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        const shouldUpdate = !isArraysEqual(this.state.ids, nextState.ids);
+    shouldComponentUpdate(nextProps) {
+        const shouldUpdate = !isArraysEqual(this.props.ids, nextProps.ids);
         console.log('should update', shouldUpdate);
         return shouldUpdate
     }
 
     render() {
-        const { ids } = this.state;
-        console.log('render data:', ids);
+        const ids = this.props.ids;
         if (!ids) {
             return <div>Loading …</div>
         }
         return (
             <div>
                 <NewsItemList ids={ids}/>
-                <button onClick={this.fetchIds}>Refresh</button>
+                <button onClick={this.props.fetchItemIds}>Refresh</button>
+                items to show <input onChange={e =>
+                this.props.setItemsToShow(e.target.value)
+            }/>
             </div>
         );
     }
 }
+
+const firstN = (n, arr) => arr.slice(0, n);
+
+const mapStateToProps = state => {
+    const n = state.ui.itemsToShow;
+    const ids = firstN(n, state.data.itemIds.ids);
+    return {
+        ids
+    }
+};
+
+const mapDispatchToProps = {
+    fetchItemIds,
+    setItemsToShow
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageNewsList);

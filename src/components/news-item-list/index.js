@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import {NewsItem} from "../news-item";
+import {NewsItem} from "..";
 
 export const NewsItemList = ({ids}) => (
     <ol className="news_item">

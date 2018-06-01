@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Content, Footer, Header, PageNewsList, Page} from './components';
+import {Content, Footer, Header, PageNewsList, Page, NewsItem} from './components';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {NewsItem} from "./components/news-item";
 
 class App extends Component {
     render() {
