@@ -1,3 +1,9 @@
+
+
+
+
+
+
 const BASE_URL = 'https://hacker-news.firebaseio.com';
 const fetchJson = url => fetch(url).then(res => res.json());
 

@@ -1,3 +1,6 @@
+
+
+
 import { combineReducers } from "redux";
 import itemsIds from "./itemsIds";
 import items from "./items";
@@ -25,7 +28,7 @@ export default {
   rawReducer,
   reducer,
   itemsIds: {
-    ...itemsIds,
+    ...itemsIds, // { ns, selectors, actions }
     selectors: mapObj(itemsIds.selectors, augmentSelectorWith(root)),
   },
   items: {
